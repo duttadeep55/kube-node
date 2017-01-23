@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: test-node
+    track: test
+  name: test-node-thrasher
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: test-node
+    spec:
+      containers:
+      - name: test-node
+        image: duttadeep55/test-node:thrasher
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80

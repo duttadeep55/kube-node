@@ -1,0 +1,76 @@
+
+=============================
+BUILD NODE.JS APP
+=============================
+
+cd ~/Documents/Projects/Docker/Nodetestnode/
+
+cat Dockerfile
+
+docker build -t duttadeep55/node-web-app .
+
+docker images
+
+docker run -p 49160:8080 -d duttadeep55/node-web-app
+
+curl localhost:49160
+
+docker ps
+
+docker stop CONTAINER
+
+ATTACH VOLUME
+docker run -v $(PWD)/server.js:/usr/src/app/server.js -p 49160:8080 -d duttadeep55/node-web-app
+
+docker exec -it CONTAINER_NAME bash
+
+docker stop CONTAINER
+
+docker rm -v $(docker ps -a -q -f status=exited) && docker rmi $(docker images -f "dangling=true" -q)
+
+
+=============================
+USE DOCKER AS EXECUTABLE
+=============================
+
+python --version
+
+docker run python:3.5-alpine python --version
+(no waiting for OS to start)
+
+
+=============================
+WORDPRESS APP WITH MYSQL
+=============================
+
+docker search mysql
+
+docker pull mysql
+docker pull wordpress
+
+https://hub.docker.com/_/mysql/
+
+docker pull mysql:5.6
+
+docker images | grep mysql
+
+docker ps
+
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=password -d mysql:latest
+
+docker exec -it some-mysql bash
+(interactive terminal)
+
+docker run --name some-wordpress --link some-mysql:mysql -p 8080:80 -d wordpress:latest
+
+docker ps
+
+http://localhost:8080/
+
+docker stop some-mysql some-wordpress
+
+docker ps -a
+
+docker rm -v $(docker ps -a -q -f status=exited) && docker rmi $(docker images -f "dangling=true" -q)
+
+

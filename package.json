@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-api-for-kube-mesos",
+  "version": "1.0.0",
+  "description": "A test node API for dogfeeding Kubernetes and Mesos Platform.",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "engines": {
+    "node": ">=5.0"
+  }
+}

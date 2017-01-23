@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: testnode
+  name: testnode
+spec:
+  ports:
+    - nodePort: 36000
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: testnode
+  type: NodePort
