@@ -1,4 +1,4 @@
-# docker-node-testnode
+# kube-node
 
 Demo to run Node.js in Docker container.
 
